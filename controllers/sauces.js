@@ -3,11 +3,16 @@ const Sauces = require('../models/Sauces');
 
 
 exports.createSauces = (req, res, next) => {
-  const saucesObject = JSON.parse(req.body.sauces)
+  console.log (req.body.sauce)
+  const saucesObject = JSON.parse(req.body.sauce)
   delete saucesObject._id
   const sauces = new Sauces({
     ...saucesObject,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+    likes:0,
+    dislikes:0,
+    usersLiked:[],
+    usersDisliked:[],
   })
 
   sauces.save().then(
