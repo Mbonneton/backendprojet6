@@ -1,8 +1,6 @@
 const fs = require('fs');
 const Sauces = require('../models/Sauces');
 
-console.log("controller sauces");
-
 
 exports.createSauces = (req, res, next) => {
   const saucesObject = JSON.parse(req.body.sauces)
@@ -11,13 +9,7 @@ exports.createSauces = (req, res, next) => {
     ...saucesObject,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   })
-  // const sauces = new Sauces({
-  //   title: req.body.title,
-  //   description: req.body.description,
-  //   imageUrl: req.body.imageUrl,
-  //   price: req.body.price,
-  //   userId: req.body.userId
-  // });
+
   sauces.save().then(
     () => {
       res.status(201).json({
@@ -56,14 +48,7 @@ exports.modifySauces = (req, res, next) => {
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     }
     : {...req.body}
-  // const sauces = new Sauces({
-  //   _id: req.params.id,
-  //   title: req.body.title,
-  //   description: req.body.description,
-  //   imageUrl: req.body.imageUrl,
-  //   price: req.body.price,
-  //   userId: req.body.userId
-  // });
+  
   Sauces.updateOne({_id: req.params.id}, {...saucesObject, _id: req.params.id}).then(
     () => {
       res.status(201).json({
@@ -130,4 +115,7 @@ exports.getAllSauces = (req, res, next) => {
       });
     }
   );
+};
+exports.likeSauces = (req, res, next) => {
+console.log('controller de la route likeSauces')
 };

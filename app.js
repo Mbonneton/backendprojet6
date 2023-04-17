@@ -31,7 +31,7 @@ mongoose.connect('mongodb+srv://enixiii25:Cannelle97128@projet6.b2dcije.mongodb.
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, 'images')))
 
-//CORS
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
