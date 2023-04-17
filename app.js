@@ -25,7 +25,6 @@ mongoose.connect('mongodb+srv://enixiii25:Cannelle97128@projet6.b2dcije.mongodb.
 
 
 
-  console.log("express app.js");
 
 
 app.use(express.json());

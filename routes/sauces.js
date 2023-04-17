@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-console.log("router sauces");
 
 const saucesCtrl = require('../controllers/sauces');
 const auth = require('../middleware/auth');
